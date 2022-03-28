@@ -30,11 +30,16 @@ pipeline {
     stages {
         stage('clone') {
             steps {
-                echo "clone"
+                git url: "$SOURCE_CODE_URL",
+                    branch: "$RELEASE_BRANCH",
+                    credentialsId: "$SOURCECODE_JENKINS_CREDENTIAL_ID"
+                sh "ls -al"
             }
         }
         stage('test') {
             steps {
+                sh "pwd"
+                sh "mvn clean test"
                 echo "test"
             }
         }
@@ -46,6 +51,12 @@ pipeline {
         stage('deploy') {
             steps {
                 echo "deploy"
+                echo "${SERVER_LIST}"
+
+                script {
+                    echo "${SERVER_LIST}"
+                    ssh_publisher("${SERVER_LIST}")
+                }
             }
         }
     }
