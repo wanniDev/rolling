@@ -19,7 +19,7 @@ def ssh_publisher(SERVER_CONFIG) {
 pipeline {
     agent any
     tools {
-        maven "Maven 3.6.3"
+        maven "Maven 3.8.4"
     }
     environment {
         SOURCECODE_JENKINS_CREDENTIAL_ID = 'wanniDev'
