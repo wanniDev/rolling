@@ -8,20 +8,24 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.rolling.entity.Model;
+import com.example.rolling.service.TestService;
+
+import lombok.RequiredArgsConstructor;
 
 @RestController
 @RequestMapping("api")
+@RequiredArgsConstructor
 public class TestController {
-	@Value("server.port")
-	private int port;
+
+	private final TestService testService;
 
 	@GetMapping("port")
 	public ResponseEntity<Integer> getPort() {
-		return ResponseEntity.ok(port);
+		return ResponseEntity.ok(testService.getPort());
 	}
 
 	@GetMapping("hcheck")
 	public ResponseEntity<Long> healthCheck() {
-		return ResponseEntity.ok(System.currentTimeMillis());
+		return ResponseEntity.ok(testService.getHealthCheck());
 	}
 }
