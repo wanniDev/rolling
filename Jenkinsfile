@@ -30,15 +30,22 @@ pipeline {
     stages {
         stage('clone') {
             steps {
-                git url: "$SOURCE_CODE_URL",
-                    branch: "$RELEASE_BRANCH",
-                    credentialsId: "$SOURCECODE_JENKINS_CREDENTIAL_ID"
-                sh "ls -al"
+                echo "clone"
             }
         }
         stage('test') {
             steps {
-                echo "hello"
+                echo "test"
+            }
+        }
+        stage('build') {
+            steps {
+                echo "build"
+            }
+        }
+        stage('deploy') {
+            steps {
+                echo "deploy"
             }
         }
     }
