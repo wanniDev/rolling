@@ -37,9 +37,6 @@ pipeline {
             }
         }
         stage('test') {
-            when {
-                changeRequest target: 'main'
-            }
             steps {
                 sh "pwd"
                 sh "mvn clean test"
