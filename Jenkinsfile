@@ -34,7 +34,6 @@ pipeline {
                     branch: "$RELEASE_BRANCH",
                     credentialsId: "$SOURCECODE_JENKINS_CREDENTIAL_ID"
                 sh "ls -al"
-                echo "env:  ${env.getEnvironment()}"
             }
         }
         stage('test') {
