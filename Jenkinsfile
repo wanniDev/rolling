@@ -47,13 +47,17 @@ pipeline {
             }
         }
         stage('build') {
+            when {
+                changeRequest target: 'main'
+            }
             steps {
                 echo "build"
             }
         }
+
         stage('deploy') {
             when {
-                changeRequest target: 'main'
+                branch 'main'
             }
             steps {
                 echo "deploy"
