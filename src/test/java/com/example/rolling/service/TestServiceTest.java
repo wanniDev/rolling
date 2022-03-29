@@ -20,6 +20,7 @@ class TestServiceTest {
 
 	@Test
 	void healthCheck() {
+		assertThat(testService.getHealthCheck()).isGreaterThan(-1L);
 		assertThat(testService.getHealthCheck()).isNotNull();
 	}
 }
