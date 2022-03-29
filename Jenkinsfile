@@ -29,9 +29,8 @@ pipeline {
     stages {
         stage('clone') {
             steps {
-                RELEASE_BRANCH = env.BRANCH_NAME
                 git url: "$SOURCE_CODE_URL",
-                    branch: "$RELEASE_BRANCH",
+                    branch: env.BRANCH_NAME,
                 sh "ls -al"
             }
         }
