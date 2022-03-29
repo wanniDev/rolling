@@ -24,13 +24,10 @@ pipeline {
     stages {
         stage('clone') {
             steps {
-//                 git url: "$SOURCE_CODE_URL",
-//                     branch: "$RELEASE_BRANCH",
-//                     credentialsId: "$SOURCECODE_JENKINS_CREDENTIAL_ID"
-//                 sh "ls -al"
-                cleanWs()
-                GIT_BRANCH_NAME = sh(returnStdout: true, script: 'echo ${payload} | python3 -c \"import sys,json;print(json.load(sys.stdin,strict=False)[\'ref\'][11:])\"').trim()
-                echo "arrive from ${GIT_BRANCH_NAME}"
+                git url: "$SOURCE_CODE_URL",
+                    branch: "$RELEASE_BRANCH",
+                    credentialsId: "$SOURCECODE_JENKINS_CREDENTIAL_ID"
+                sh "ls -al"
             }
         }
         stage('test') {
