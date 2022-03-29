@@ -43,7 +43,7 @@ pipeline {
             steps {
                 sh "pwd"
                 sh "mvn clean test"
-                echo "test"
+                echo "$TEST"
             }
         }
         stage('build') {
