@@ -23,14 +23,14 @@ pipeline {
     }
     environment {
         SOURCE_CODE_URL = 'https://github.com/wanniDev/rolling.git'
-        RELEASE_BRANCH = ''
+        RELEASE_BRANCH = 'main'
         SERVER_LIST = 'was1'
     }
     stages {
         stage('clone') {
             steps {
                 git url: "$SOURCE_CODE_URL",
-                    branch: env.BRANCH_NAME,
+                    branch: "$RELEASE_BRANCH",
                 sh "ls -al"
             }
         }
