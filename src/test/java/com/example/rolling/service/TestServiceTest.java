@@ -17,4 +17,9 @@ class TestServiceTest {
 	void getPort() {
 		assertThat(testService.getPort()).isEqualTo(8080);
 	}
+
+	@Test
+	void healthCheck() {
+		assertThat(testService.getHealthCheck()).isNotNull();
+	}
 }
