@@ -52,6 +52,9 @@ pipeline {
             }
         }
         stage('deploy') {
+            when {
+                changeRequest target: 'main'
+            }
             steps {
                 echo "deploy"
                 echo "${SERVER_LIST}"
