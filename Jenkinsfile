@@ -22,6 +22,7 @@ pipeline {
         maven "Maven 3.8.4"
     }
     environment {
+        SOURCECODE_JENKINS_CREDENTIAL_ID = 'wanniDev'
         SOURCE_CODE_URL = 'https://github.com/wanniDev/rolling.git'
         RELEASE_BRANCH = 'main'
         SERVER_LIST = 'was1'
@@ -31,13 +32,11 @@ pipeline {
             steps {
                 git url: "$SOURCE_CODE_URL",
                     branch: "$RELEASE_BRANCH",
+                    credentialsId: "$SOURCECODE_JENKINS_CREDENTIAL_ID"
                 sh "ls -al"
             }
         }
         stage('test') {
-            when {
-                changeRequest target: 'main'
-            }
             steps {
                 sh "pwd"
                 sh "mvn clean test"
