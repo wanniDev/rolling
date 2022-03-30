@@ -43,6 +43,8 @@ pipeline {
                 echo "$TEST"
                 echo "$TARGET"
                 echo env.BRANCH_NAME
+                echo env.GIT_BRANCH
+                echo "${GIT_BRANCH}"
             }
         }
         stage('build') {
