@@ -32,6 +32,7 @@ pipeline {
                     branch: "${params.CURRENT}"
 //                     credentialsId: "$SOURCECODE_JENKINS_CREDENTIAL_ID"
                 sh "ls -al"
+                echo "1"
             }
         }
         stage('test') {
