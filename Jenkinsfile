@@ -24,9 +24,8 @@ pipeline {
     environment {
 //         SOURCECODE_JENKINS_CREDENTIAL_ID = 'wanniDev'
         SOURCE_CODE_URL = 'https://github.com/wanniDev/rolling.git'
-        RELEASE_BRANCH = 'main'
+        RELEASE_BRANCH = '$TARGET'
         SERVER_LIST = 'was1'
-        TARGET = '$TARGET'
     }
     stages {
         stage('clone') {
@@ -42,6 +41,7 @@ pipeline {
                 sh "pwd"
                 sh "mvn clean test"
                 echo "$TEST"
+                echo "$TARGET"
             }
         }
         stage('build') {
