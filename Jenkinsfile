@@ -22,18 +22,15 @@ pipeline {
     tools {
         maven "Maven 3.8.4"
     }
-    environment {
-//         SOURCECODE_JENKINS_CREDENTIAL_ID = 'wanniDev'
-        SOURCE_CODE_URL = 'https://github.com/wanniDev/rolling.git'
-//         SERVER_LIST = 'was1'
-        OUTPUT = ''
+    parameters {
+        gitParameter branchFilter: 'origin/(.*)', defaultValue: 'main', name: 'CURRENT', type: 'PT_BRANCH'
     }
     stages {
         stage('clone') {
             steps {
                 sh "current :  $CURRENT"
                 sh "git branch : $GIT_BRANCH"
-                git url: "$SOURCE_CODE_URL",
+                git url: "https://github.com/wanniDev/rolling.git",
                     branch: "$CURRENT"
 //                     credentialsId: "$SOURCECODE_JENKINS_CREDENTIAL_ID"
                 sh "ls -al"
