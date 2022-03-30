@@ -39,8 +39,9 @@ pipeline {
             }
         }
         stage('test') {
+        OUTPUT = sh(encoding: 'UTF-8', returnStdout: true, script: 'java -version')
             steps {
-                OUTPUT = sh(encoding: 'UTF-8', returnStdout: true, script: 'java -version')
+
                 sh "pwd"
                 sh "mvn clean test"
                 echo "$TEST"
