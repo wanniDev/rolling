@@ -40,10 +40,8 @@ pipeline {
         }
         stage('test') {
             steps {
-//                 script {
-//                     cleanWs()
-//                     OUTPUT = sh(returnStdout: true, script: 'echo \"hello fsdfdsf\"').trim()
-//                 }
+                OUTPUT = sh returnStdout: true,
+                            script: 'echo \"hello fsdfdsf\"'
                 sh "pwd"
                 sh "mvn clean test"
                 echo "$TEST"
