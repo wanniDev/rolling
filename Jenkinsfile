@@ -40,6 +40,7 @@ pipeline {
         }
         stage('test') {
             steps {
+                cleanWs()
                 OUTPUT = sh(returnStdout: true, script: 'echo ${payload} | python3 -c \"import sys,json;print(json.load(sys.stdin,strict=False)[\'ref\'][11:])\"').trim()
                 sh "pwd"
                 sh "mvn clean test"
