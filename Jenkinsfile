@@ -42,6 +42,7 @@ pipeline {
                 sh "mvn clean test"
                 echo "$TEST"
                 echo "$TARGET"
+                echo env.BRANCH_NAME
             }
         }
         stage('build') {
