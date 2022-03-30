@@ -27,6 +27,7 @@ pipeline {
         SOURCE_CODE_URL = 'https://github.com/wanniDev/rolling.git'
         RELEASE_BRANCH = 'main'
         SERVER_LIST = 'was1'
+        GET_ECHO = ''
     }
     stages {
         stage('clone') {
@@ -39,6 +40,7 @@ pipeline {
         }
         stage('test') {
             steps {
+                GET_ECHO = sh(returnStdout: true, script: 'echo \"hello everyone.\"').trim()
                 sh "pwd"
                 sh "mvn clean test"
                 echo "$TEST"
@@ -47,30 +49,31 @@ pipeline {
                 echo "GIT_BRANCH : " + env.GIT_BRANCH
                 echo "GIT_BRANCH : ${GIT_BRANCH}"
                 echo "GIT_LOCAL_BRANCH : " + env.GIT_LOCAL_BRANCH
+                echo "GET_ECHO : ${GET_ECHO}"
             }
         }
-        stage('build') {
-            when {
-                environment name: "TARGET", value: "main"
-            }
-            steps {
-                echo "build"
-            }
-        }
-
-        stage('deploy') {
-            when {
-                environment name: "TARGET", value: "main"
-            }
-            steps {
-                echo "deploy"
-                echo "${SERVER_LIST}"
-
-                script {
-                    echo "${SERVER_LIST}"
-                    ssh_publisher("${SERVER_LIST}")
-                }
-            }
-        }
+//         stage('build') {
+//             when {
+//                 environment name: "TARGET", value: "main"
+//             }
+//             steps {
+//                 echo "build"
+//             }
+//         }
+//
+//         stage('deploy') {
+//             when {
+//                 environment name: "TARGET", value: "main"
+//             }
+//             steps {
+//                 echo "deploy"
+//                 echo "${SERVER_LIST}"
+//
+//                 script {
+//                     echo "${SERVER_LIST}"
+//                     ssh_publisher("${SERVER_LIST}")
+//                 }
+//             }
+//         }
     }
 }
