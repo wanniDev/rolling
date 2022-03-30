@@ -46,7 +46,7 @@ pipeline {
         }
         stage('build') {
             when {
-                environment name: "TARGET", value: "main"
+                environment name: "TARGET", value: "feature/*"
             }
             steps {
                 echo "build"
