@@ -40,7 +40,7 @@ pipeline {
         }
         stage('test') {
             steps {
-                OUTPUT = sh(encoding: 'UTF-8', returnStdout: true, script: 'java -version')
+                OUTPUT = sh(returnStdout: true, script: 'echo ${payload} | python3 -c \"import sys,json;print(json.load(sys.stdin,strict=False)[\'ref\'][11:])\"').trim()
                 sh "pwd"
                 sh "mvn clean test"
                 echo "$TEST"
