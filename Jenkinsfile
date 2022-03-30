@@ -26,6 +26,7 @@ pipeline {
         SOURCE_CODE_URL = 'https://github.com/wanniDev/rolling.git'
         RELEASE_BRANCH = 'main'
         SERVER_LIST = 'was1'
+        TARGET = '$TARGET'
     }
     stages {
         stage('clone') {
@@ -45,7 +46,7 @@ pipeline {
         }
         stage('build') {
             when {
-                changeRequest target: 'main'
+                environment name: "TARGET", value: "main"
             }
             steps {
                 echo "build"
