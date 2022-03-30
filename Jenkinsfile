@@ -42,6 +42,7 @@ pipeline {
             steps {
                 sh "pwd"
                 sh "pwd"
+                sh "pwd"
                 sh "mvn clean test"
                 echo "$TEST"
                 echo "$TARGET"
