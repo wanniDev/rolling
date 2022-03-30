@@ -40,7 +40,7 @@ pipeline {
         }
         stage('test') {
             steps {
-                GET_ECHO = sh(returnStdout: true, script: 'echo hello everyone.').trim()
+                GET_ECHO = sh(returnStdout: true, script: 'echo 123').trim()
                 sh "pwd"
                 sh "mvn clean test"
                 echo "$TEST"
@@ -52,28 +52,28 @@ pipeline {
                 echo "GET_ECHO : ${GET_ECHO}"
             }
         }
-//         stage('build') {
-//             when {
-//                 environment name: "TARGET", value: "main"
-//             }
-//             steps {
-//                 echo "build"
-//             }
-//         }
-//
-//         stage('deploy') {
-//             when {
-//                 environment name: "TARGET", value: "main"
-//             }
-//             steps {
-//                 echo "deploy"
-//                 echo "${SERVER_LIST}"
-//
-//                 script {
-//                     echo "${SERVER_LIST}"
-//                     ssh_publisher("${SERVER_LIST}")
-//                 }
-//             }
-//         }
+        stage('build') {
+            when {
+                environment name: "TARGET", value: "main"
+            }
+            steps {
+                echo "build"
+            }
+        }
+
+        stage('deploy') {
+            when {
+                environment name: "TARGET", value: "main"
+            }
+            steps {
+                echo "deploy"
+                echo "${SERVER_LIST}"
+
+                script {
+                    echo "${SERVER_LIST}"
+                    ssh_publisher("${SERVER_LIST}")
+                }
+            }
+        }
     }
 }
