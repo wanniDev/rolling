@@ -28,8 +28,6 @@ pipeline {
     stages {
         stage('clone') {
             steps {
-                sh "current :  $CURRENT"
-                sh "git branch : $GIT_BRANCH"
                 git url: "https://github.com/wanniDev/rolling.git",
                     branch: "${params.CURRENT}"
 //                     credentialsId: "$SOURCECODE_JENKINS_CREDENTIAL_ID"
