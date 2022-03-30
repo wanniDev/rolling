@@ -24,7 +24,7 @@ pipeline {
     environment {
 //         SOURCECODE_JENKINS_CREDENTIAL_ID = 'wanniDev'
         SOURCE_CODE_URL = 'https://github.com/wanniDev/rolling.git'
-        RELEASE_BRANCH = '$TARGET'
+        RELEASE_BRANCH = 'main'
         SERVER_LIST = 'was1'
     }
     stages {
@@ -55,7 +55,7 @@ pipeline {
 
         stage('deploy') {
             when {
-                branch 'main'
+                git name: "branch", value: 'main'
             }
             steps {
                 echo "deploy"
