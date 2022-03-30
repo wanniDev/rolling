@@ -27,7 +27,6 @@ pipeline {
         SOURCE_CODE_URL = 'https://github.com/wanniDev/rolling.git'
         RELEASE_BRANCH = 'main'
         SERVER_LIST = 'was1'
-        GET_ECHO = ''
     }
     stages {
         stage('clone') {
@@ -40,7 +39,7 @@ pipeline {
         }
         stage('test') {
             steps {
-                GET_ECHO = sh(encoding: 'UTF-8', returnStatus: true, script: 'java -version') 
+                def GET_ECHO = sh(encoding: 'UTF-8', returnStatus: true, script: 'java -version')
                 sh "pwd"
                 sh "mvn clean test"
                 echo "$TEST"
