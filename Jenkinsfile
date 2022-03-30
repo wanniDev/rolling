@@ -40,7 +40,7 @@ pipeline {
         }
         stage('test') {
             steps {
-                GET_ECHO = sh(returnStdout: true, script: 'echo \"hello everyone.\"').trim()
+                GET_ECHO = sh(returnStdout: true, script: 'echo hello everyone.').trim()
                 sh "pwd"
                 sh "mvn clean test"
                 echo "$TEST"
