@@ -31,6 +31,7 @@ pipeline {
     stages {
         stage('clone') {
             steps {
+                sh "${GIT_BRANCH}"
                 git url: "$SOURCE_CODE_URL",
                     branch: "${GIT_BRANCH}"
 //                     credentialsId: "$SOURCECODE_JENKINS_CREDENTIAL_ID"
