@@ -43,10 +43,10 @@ pipeline {
                 sh "mvn clean test"
                 echo "$TEST"
                 echo "$TARGET"
-                echo env.BRANCH_NAME
-                echo env.GIT_BRANCH
-                echo "${GIT_BRANCH}"
-                echo env.GIT_LOCAL_BRANCH
+                echo "BRANCH_NAME : " + env.BRANCH_NAME
+                echo "GIT_BRANCH : " + env.GIT_BRANCH
+                echo "GIT_BRANCH : ${GIT_BRANCH}"
+                echo "GIT_LOCAL_BRANCH : " + env.GIT_LOCAL_BRANCH
             }
         }
         stage('build') {
