@@ -47,7 +47,6 @@ pipeline {
                 echo env.GIT_BRANCH
                 echo "${GIT_BRANCH}"
                 echo env.GIT_LOCAL_BRANCH
-                echo "${GIT_LOCAL_BRANCH}"
             }
         }
         stage('build') {
