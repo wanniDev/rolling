@@ -25,7 +25,6 @@ pipeline {
     environment {
 //         SOURCECODE_JENKINS_CREDENTIAL_ID = 'wanniDev'
         SOURCE_CODE_URL = 'https://github.com/wanniDev/rolling.git'
-        RELEASE_BRANCH = env.GIT_BRANCH
 //         SERVER_LIST = 'was1'
         OUTPUT = ''
     }
@@ -33,7 +32,7 @@ pipeline {
         stage('clone') {
             steps {
                 git url: "$SOURCE_CODE_URL",
-                    branch: "$RELEASE_BRANCH"
+                    branch: "${GIT_BRANCH}"
 //                     credentialsId: "$SOURCECODE_JENKINS_CREDENTIAL_ID"
                 sh "ls -al"
             }
