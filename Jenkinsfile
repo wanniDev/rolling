@@ -8,7 +8,8 @@ def ssh_publisher(SERVER_CONFIG) {
                 verbose: true,
                 transfers: [
                     sshTransfer(
-                        sourceFiles: "target/*.jar"
+                        sourceFiles: "target/*.jar",
+                        execCommand: "echo hello"
                     )
                 ]
             )
@@ -45,6 +46,8 @@ pipeline {
                 echo env.BRANCH_NAME
                 echo env.GIT_BRANCH
                 echo "${GIT_BRANCH}"
+                echo env.GIT_LOCAL_BRANCH
+                echo "${GIT_LOCAL_BRANCH}"
             }
         }
         stage('build') {
