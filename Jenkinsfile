@@ -40,17 +40,19 @@ pipeline {
         }
         stage('test') {
             steps {
-                cleanWs()
-                OUTPUT = sh(returnStdout: true, script: 'echo ${payload} | python3 -c \"import sys,json;print(json.load(sys.stdin,strict=False)[\'ref\'][11:])\"').trim()
-                sh "pwd"
-                sh "mvn clean test"
-                echo "$TEST"
-                echo "$TARGET"
-                echo "BRANCH_NAME : " + env.BRANCH_NAME
-                echo "GIT_BRANCH : " + env.GIT_BRANCH
-                echo "GIT_BRANCH : ${GIT_BRANCH}"
-                echo "GIT_LOCAL_BRANCH : " + env.GIT_LOCAL_BRANCH
-                echo "GET_ECHO : ${OUTPUT}"
+                script {
+                    cleanWs()
+                    OUTPUT = sh(returnStdout: true, script: 'echo ${payload} | python3 -c \"import sys,json;print(json.load(sys.stdin,strict=False)[\'ref\'][11:])\"').trim()
+                    sh "pwd"
+                    sh "mvn clean test"
+                    echo "$TEST"
+                    echo "$TARGET"
+                    echo "BRANCH_NAME : " + env.BRANCH_NAME
+                    echo "GIT_BRANCH : " + env.GIT_BRANCH
+                    echo "GIT_BRANCH : ${GIT_BRANCH}"
+                    echo "GIT_LOCAL_BRANCH : " + env.GIT_LOCAL_BRANCH
+                    echo "GET_ECHO : ${OUTPUT}"
+                }
             }
         }
         stage('build') {
