@@ -42,7 +42,7 @@ pipeline {
             steps {
                 script {
                     cleanWs()
-                    OUTPUT = sh(returnStdout: true, script: 'echo ${payload} | python3 -c \"import sys,json;print(json.load(sys.stdin,strict=False)[\'ref\'][11:])\"').trim()
+                    OUTPUT = sh(returnStdout: true, script: 'echo \"hello fsdfdsf\"').trim()
                     sh "pwd"
                     sh "mvn clean test"
                     echo "$TEST"
