@@ -55,7 +55,7 @@ pipeline {
 
         stage('deploy') {
             when {
-                git name: "branch", value: 'main'
+                environment name: "TARGET", value: "main"
             }
             steps {
                 echo "deploy"
