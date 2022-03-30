@@ -26,7 +26,7 @@ pipeline {
 //         SOURCECODE_JENKINS_CREDENTIAL_ID = 'wanniDev'
         SOURCE_CODE_URL = 'https://github.com/wanniDev/rolling.git'
         RELEASE_BRANCH = 'main'
-        SERVER_LIST = 'was1'
+//         SERVER_LIST = 'was1'
         OUTPUT = ''
     }
     stages {
@@ -40,8 +40,6 @@ pipeline {
         }
         stage('test') {
             steps {
-                OUTPUT = sh returnStdout: true,
-                            script: 'echo \"hello fsdfdsf\"'
                 sh "pwd"
                 sh "mvn clean test"
                 echo "$TEST"
@@ -50,7 +48,6 @@ pipeline {
                 echo "GIT_BRANCH : " + env.GIT_BRANCH
                 echo "GIT_BRANCH : ${GIT_BRANCH}"
                 echo "GIT_LOCAL_BRANCH : " + env.GIT_LOCAL_BRANCH
-                echo "GET_ECHO : ${OUTPUT}"
             }
         }
         stage('build') {
@@ -63,16 +60,14 @@ pipeline {
         }
 
         stage('deploy') {
-            when {
-                environment name: "TARGET", value: "main"
-            }
             steps {
                 echo "deploy"
-                echo "${SERVER_LIST}"
 
                 script {
-                    echo "${SERVER_LIST}"
-                    ssh_publisher("${SERVER_LIST}")
+                    def server_list = ["was1", "was2"]
+                    for(server in server_list) {
+                        ssh_publisher(server)
+                    }
                 }
             }
         }
