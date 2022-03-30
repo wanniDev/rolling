@@ -66,7 +66,9 @@ pipeline {
                 script {
                     def server_list = ["was1", "was2"]
                     for(server in server_list) {
-                        ssh_publisher(server)
+                        stage(server) {
+                            ssh_publisher(server)
+                        }
                     }
                 }
             }
