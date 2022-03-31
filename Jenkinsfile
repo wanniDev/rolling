@@ -42,6 +42,7 @@ pipeline {
                 sh "mvn clean test"
                 echo "$TEST"
                 echo "$TARGET"
+                echo "CURRENT : ${params.CURRENT}"
                 echo "BRANCH_NAME : " + env.BRANCH_NAME
                 echo "GIT_BRANCH : " + env.GIT_BRANCH
                 echo "GIT_BRANCH : ${GIT_BRANCH}"
