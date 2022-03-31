@@ -9,7 +9,7 @@ def ssh_publisher(SERVER_CONFIG) {
                 transfers: [
                     sshTransfer(
                         sourceFiles: "target/*.jar",
-                        execCommand: "echo hello"
+                        execCommand: "pwd"
                     )
                 ]
             )
