@@ -37,6 +37,7 @@ pipeline {
         stage('test') {
             steps {
                 sh "pwd"
+                sh "ls -al"
                 sh "mvn clean test"
                 echo "$TEST"
                 echo "$TARGET"
@@ -45,6 +46,7 @@ pipeline {
                 echo "GIT_BRANCH : " + env.GIT_BRANCH
                 echo "GIT_BRANCH : ${GIT_BRANCH}"
                 echo "GIT_LOCAL_BRANCH : " + env.GIT_LOCAL_BRANCH
+
             }
         }
         stage('build') {
@@ -52,6 +54,7 @@ pipeline {
                 environment name: "TARGET", value: "main"
             }
             steps {
+                sh "ls -al"
                 echo "build"
                 sh "pwd"
                 sh "pwd"
