@@ -38,7 +38,6 @@ pipeline {
         stage('test') {
             steps {
                 sh "pwd"
-                sh "pwd"
                 sh "mvn clean test"
                 echo "$TEST"
                 echo "$TARGET"
@@ -55,6 +54,7 @@ pipeline {
             }
             steps {
                 echo "build"
+                sh "pwd"
             }
         }
 
