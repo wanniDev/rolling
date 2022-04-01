@@ -8,7 +8,6 @@ def ssh_publisher(SERVER_CONFIG) {
                 verbose: true,
                 transfers: [
                     sshTransfer(
-                        sourceFiles: "target/*.jar",
                         execCommand: "pwd"
                     )
                 ]
