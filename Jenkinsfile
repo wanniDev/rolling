@@ -55,7 +55,6 @@ pipeline {
             steps {
                 echo "build"
                 sh "pwd"
-                sh "pwd"
             }
         }
 
