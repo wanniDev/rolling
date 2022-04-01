@@ -55,8 +55,8 @@ pipeline {
             }
             steps {
                 sh "ls -al"
+                sh "ls -al ~"
                 echo "build"
-                sh "pwd"
                 sh "pwd"
             }
         }
