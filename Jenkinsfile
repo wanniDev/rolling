@@ -72,8 +72,10 @@ pipeline {
                             ssh_publisher(server)
                         }
                     }
+                    stage('loadBalancer') {
+                        sh "echo 1"
+                    }
                 }
-                sh "pwd"
             }
         }
         stage('after') {
