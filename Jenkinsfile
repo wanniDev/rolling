@@ -73,7 +73,7 @@ pipeline {
                         }
                     }
                     stage('loadBalancer') {
-                        sh "echo 1"
+                        sh "pwd"
                     }
                 }
             }
