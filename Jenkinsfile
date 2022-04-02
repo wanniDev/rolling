@@ -75,5 +75,11 @@ pipeline {
                 }
             }
         }
+        stage('after') {
+            steps {
+                sh "pwd"
+                sh "ls -la"
+            }
+        }
     }
 }
