@@ -37,6 +37,7 @@ pipeline {
         stage('test') {
             steps {
                 sh "pwd"
+                sh "whoami"
                 sh "ls -al"
                 sh "mvn clean test"
                 echo "$TEST"
