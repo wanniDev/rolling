@@ -73,6 +73,7 @@ pipeline {
                         }
                     }
                 }
+                sh "pwd"
             }
         }
         stage('after') {
